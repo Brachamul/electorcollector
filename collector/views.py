@@ -11,5 +11,7 @@ class InscritView(FormView):
     success_url = '/reussite/'
 
     def form_valid(self, form):
+        import random
         form.instance.code = random.randint(100000, 999999) # un nombre à 6 chiffres
+        form.save()
         return super(InscritView, self).form_valid(form)

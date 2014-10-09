@@ -9,7 +9,7 @@ class Inscrit(models.Model):
 	prénom = models.CharField(max_length=255)
 	nom = models.CharField(max_length=255)
 	date_de_naissance = models.DateField()
-	département = models.PositiveSmallIntegerField(max_length=3, choices=DEPARTEMENTS)
+	département = models.CharField(max_length=3, choices=DEPARTEMENTS)
 	compte_twitter = models.CharField(max_length=255, blank=True, null=True, default='@')
 	compte_facebook = models.URLField(max_length=255, blank=True, null=True, default='http://facebook.com/')
 	photo = models.ImageField(upload_to='photos', blank=True, null=True)
