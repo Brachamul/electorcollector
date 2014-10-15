@@ -82,22 +82,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
 # Template location
 
 TEMPLATE_DIRS = (
     os.path.join((BASE_DIR), "static", "templates"),
-    # 'C:/skillshare/profit/static/templates/',
 )
 
 if DEBUG:
-    MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join((BASE_DIR), "static", "static-only")
     MEDIA_ROOT = os.path.join((BASE_DIR), "static", "media")
     STATICFILES_DIRS = (
         os.path.join((BASE_DIR), "static", "static"),
     )
 
-from django.contrib import messages
-from django.contrib.messages import constants as message_constants
-MESSAGE_LEVEL = messages.DEBUG
+
+EMAIL_SUBJECT_PREFIX = "[FiDem] "
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "antonin.grele@gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = '5Bluepotatoes'

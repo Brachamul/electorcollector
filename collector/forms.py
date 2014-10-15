@@ -6,6 +6,7 @@ from collector.data.MOIS import MOIS
 from .models import *
 
 import datetime
+
 class InscritForm(forms.ModelForm):
 	class Meta:
 		model = Inscrit
@@ -13,4 +14,3 @@ class InscritForm(forms.ModelForm):
 		widgets = {
 			'date_de_naissance': SelectDateWidget(months=MOIS, years=range(2000, 1930, -1)),
 		}
-
