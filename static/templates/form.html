@@ -1,9 +1,68 @@
-{% load staticfiles %}
+{% extends "base.html" %}
 
 
-{% block head %}
+{% block head %}{{ block.super }}
 
-<title>Formulaire</title>
+<title>Fibre Démocrate</title>
+
+<style>
+form p {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+label,
+input[type="email"],
+input[type="text"],
+input[type="url"] { width: 100%; }
+
+input[type="checkbox"] { display: none; }
+
+label { display: block; }
+
+label[for="photo-clear_id"] { display: none; }
+label[for="document-clear_id"] { display: none; }
+
+input[type="file"] { display: inline-block; }
+
+@media (min-width: 600px) {
+
+    form {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+    label,
+    input[type="email"],
+    input[type="text"],
+    input[type="url"] { width: 80%; }
+
+    form p { height: 6em; }
+
+}
+
+@media (min-width: 900px) {
+
+    form {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+    }
+}
+
+.errorlist {
+    padding-left: 0;
+    color: darkred;
+    font-weight: bold;
+    font-size: .8em;
+    margin-bottom: 0;
+}
+
+
+
+</style>
 
 {% endblock head %}
 
@@ -11,12 +70,14 @@
 
 {% block content %}
 
+{{ block.super }}
+
+<h1>Modifier une entrée :</h1><br>
 
 <form method="post" action="" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{ form.as_p }}
-	<input type="submit" name="submit" value="Enregistrer" />
+    <input class="btn btn-success" style="float: right;" type="submit" name="submit" value="Enregistrer" />
 </form>
-
 
 {% endblock content %}
