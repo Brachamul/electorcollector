@@ -7,15 +7,26 @@
 
 <style>
 form p {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 1.5em;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 1.5em;
 }
+form p:last-child { margin-bottom: 0; }
 
 label,
+textarea,
+#id_département,
+.helptext,
+.submit,
+input[type="number"],
 input[type="email"],
 input[type="text"],
+input[type="file"],
 input[type="url"] { width: 100%; }
+
+.submit { margin-top: 2em; }
+
+.helptext { display: block; font-size: 0.8em; }
 
 input[type="checkbox"] { display: none; }
 
@@ -28,39 +39,47 @@ input[type="file"] { display: inline-block; }
 
 @media (min-width: 600px) {
 
-    form {
-        -webkit-column-count: 2; /* Chrome, Safari, Opera */
-        -moz-column-count: 2; /* Firefox */
-        column-count: 2;
-    }
+	form {
+		-webkit-column-count: 2; /* Chrome, Safari, Opera */
+		-moz-column-count: 2; /* Firefox */
+		column-count: 2;
+		-webkit-column-gap: 6em; /* Chrome, Safari, Opera */
+		-moz-column-gap: 6em; /* Firefox */
+		column-gap: 6em;
+	}
 
-    label,
-    input[type="email"],
-    input[type="text"],
-    input[type="url"] { width: 80%; }
+	.submit { margin-right: 20%; }
 
-    form p { height: 6em; }
+	
 
 }
 
 @media (min-width: 900px) {
 
-    form {
-        -webkit-column-count: 3; /* Chrome, Safari, Opera */
-        -moz-column-count: 3; /* Firefox */
-        column-count: 3;
-    }
+	form {
+		-webkit-column-count: 3; /* Chrome, Safari, Opera */
+		-moz-column-count: 3; /* Firefox */
+		column-count: 3;
+	}
 }
 
 .errorlist {
-    padding-left: 0;
-    color: darkred;
-    font-weight: bold;
-    font-size: .8em;
-    margin-bottom: 0;
+	padding-left: 0;
+	color: red;
+	font-weight: bold;
+	font-size: .8em;
+	margin-bottom: 0;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
+input[type=number] {
+    -moz-appearance:textfield;
+}
 
 </style>
 
@@ -72,12 +91,12 @@ input[type="file"] { display: inline-block; }
 
 {{ block.super }}
 
-<h1>Modifier une entrée :</h1><br>
+<h1>Votre inscription à notre liste :</h1><br>
 
 <form method="post" action="" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{ form.as_p }}
-    <input class="btn btn-success" style="float: right;" type="submit" name="submit" value="Enregistrer" />
+	<input class="btn btn-success submit" type="submit" name="submit" value="Enregistrer" />
 </form>
 
 {% endblock content %}
