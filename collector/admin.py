@@ -7,6 +7,6 @@ from .forms import *
 
 class InscritAdmin(admin.ModelAdmin):
 	model = Inscrit
-	list_display = ("nom", "prénom")
+	list_display = ("nom", "prenom")
 	
 admin.site.register(Inscrit, InscritAdmin)
