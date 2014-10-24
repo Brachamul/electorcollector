@@ -1,5 +1,5 @@
 from django.db import models
-
+import os
 from collector.data.DEPARTEMENTS import DEPARTEMENTS
 
 class Inscrit(models.Model):
@@ -17,7 +17,6 @@ class Inscrit(models.Model):
 	compte_facebook = models.URLField(max_length=255, blank=True, null=True, default='http://facebook.com/')
 	bio = models.TextField(max_length=512, blank=True, null=True)
 
-	import os
 	def get_upload_path(instance, filename):
 		return os.path.join(
 			instance.nom, "-", instance.prenom, filename)
