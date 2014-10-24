@@ -19,7 +19,7 @@ class Inscrit(models.Model):
 
 	def get_upload_path(instance, filename):
 		return os.path.join(
-			instance.nom, "-", instance.prenom, filename)
+			"%s-%s" % (instance.nom, instance.prenom), filename)
 
 	photo = models.ImageField(upload_to=get_upload_path, blank=True, null=True)
 	cni = models.FileField("Pièce d'identité", upload_to=get_upload_path, blank=True, null=True)
